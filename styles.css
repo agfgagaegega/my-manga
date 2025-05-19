@@ -12,6 +12,7 @@ body {
 .gallery {
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 h1 {
@@ -28,12 +29,13 @@ h1 {
 }
 
 .gallery-image {
-    width: 85vw;
+    width: 85vw; /* 85% of viewport width */
     height: auto;
-    max-width: none;
+    max-width: 100%; /* Prevent overflow on narrow screens */
     max-height: none;
     border: 2px solid #333;
     border-radius: 8px;
+    box-sizing: border-box; /* Include border in width calculation */
 }
 
 .navigation {
@@ -66,8 +68,13 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for foldable devices and narrow screens */
 @media (max-width: 768px) {
+    .gallery-image {
+        width: 90vw; /* Slightly smaller for narrow screens like Z Fold 5 cover screen */
+        max-width: 100%;
+    }
+
     .navigation {
         right: 10px;
     }
@@ -77,8 +84,12 @@ button:disabled {
         font-size: 12px;
         width: 60px;
     }
+}
 
+/* Specific adjustments for Z Fold 5 inner screen (approximate aspect ratio ~21:18) */
+@media (min-width: 769px) and (max-width: 1812px) and (max-height: 2176px) {
     .gallery-image {
-        width: 95vw;
+        width: 80vw; /* Adjust for Z Fold 5 inner screen */
+        max-width: 100%;
     }
 }
