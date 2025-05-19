@@ -1,43 +1,60 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    overflow: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gallery {
     text-align: center;
+    padding: 20px;
 }
 
 h1 {
     color: #333;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: auto;
 }
 
 #gallery-image {
-    width: 90vw; /* Use 90% of viewport width */
-    max-width: 1200px; /* Cap at 1200px to avoid overly large images on big screens */
-    max-height: 80vh; /* Allow taller images, but cap at 80% of viewport height */
+    width: 85vw; /* Set width to 85% of viewport width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: none; /* Remove max-width constraint for zooming */
+    max-height: none; /* Remove max-height constraint for zooming */
     border: 2px solid #333;
     border-radius: 8px;
-    object-fit: contain; /* Ensure images scale properly without distortion */
 }
 
 .navigation {
-    margin-top: 30px; /* Increased margin to avoid overlap with larger images */
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 16px;
+    padding: 8px 15px;
+    font-size: 14px;
     cursor: pointer;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
+    width: 80px;
 }
 
 button:hover {
@@ -49,20 +66,15 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    #gallery-image {
-        width: 95vw; /* Use more width on smaller screens */
-        max-width: 100%; /* Remove max-width cap for mobile */
-        max-height: 70vh; /* Slightly smaller height for mobile */
-    }
-
     .navigation {
-        margin-top: 20px;
+        right: 10px;
     }
 
     button {
-        padding: 8px 15px;
-        font-size: 14px;
+        padding: 6px 12px;
+        font-size: 12px;
+        width: 60px;
     }
 }
