@@ -1,4 +1,4 @@
-const imageCount = 100;
+const imageCount = 5;
 const imageFolder = 'images/';
 const imagePrefix = 'page_';
 const imageExtension = '.webp';
