@@ -1,9 +1,13 @@
-const images = [
-    'images/image1.jpg', // Replace with your image paths
-    'images/image2.jpg',
-    'images/image3.jpg'
-    // Add more image paths as needed
-];
+const imageCount = 100;
+const imageFolder = 'images/';
+const imagePrefix = 'page_';
+const imageExtension = '.webp';
+
+const images = [];
+for (let i = 1; i <= imageCount; i++) {
+    const paddedNumber = i.toString().padStart(3, '0');
+    images.push(`${imageFolder}${imagePrefix}${paddedNumber}${imageExtension}`);
+}
 
 let currentIndex = 0;
 
@@ -13,6 +17,12 @@ const nextBtn = document.getElementById('next-btn');
 
 function updateImage() {
     galleryImage.src = images[currentIndex];
+    galleryImage.onerror = () => {
+        // Skip missing images
+        images.splice(currentIndex, 1);
+        if (currentIndex >= images.length) currentIndex = images.length - 1;
+        updateImage();
+    };
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex === images.length - 1;
 }
