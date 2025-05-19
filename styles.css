@@ -21,17 +21,17 @@ h1 {
 
 .image-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    overflow: auto;
+    gap: 20px;
 }
 
-#gallery-image {
-    width: 85vw; /* Set width to 85% of viewport width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: none; /* Remove max-width constraint for zooming */
-    max-height: none; /* Remove max-height constraint for zooming */
+.gallery-image {
+    width: 85vw;
+    height: auto;
+    max-width: none;
+    max-height: none;
     border: 2px solid #333;
     border-radius: 8px;
 }
@@ -76,5 +76,9 @@ button:disabled {
         padding: 6px 12px;
         font-size: 12px;
         width: 60px;
+    }
+
+    .gallery-image {
+        width: 95vw;
     }
 }
