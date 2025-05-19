@@ -18,20 +18,19 @@
         <button id="next-btn">Next</button>
     </div>
     <script>
-        const totalImages = 125; // Total number of images
-        const imagesPerPage = 30; // Number of images per set
+        const totalImages = 125;
+        const imagesPerPage = 30;
         const imageFolder = 'images/';
         const imagePrefix = 'page_';
         const imageExtension = '.webp';
 
-        let currentPage = 1; // Track the current set of images (1-based index)
+        let currentPage = 1;
 
         const imageContainer = document.getElementById('image-container');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
 
         function updateImages() {
-            // Clear current images
             imageContainer.innerHTML = '';
             const startIndex = (currentPage - 1) * imagesPerPage + 1;
             const endIndex = Math.min(startIndex + imagesPerPage - 1, totalImages);
@@ -42,13 +41,13 @@
                 img.src = `${imageFolder}${imagePrefix}${paddedNumber}${imageExtension}`;
                 img.alt = `Page ${paddedNumber}`;
                 img.className = 'gallery-image';
+                img.setAttribute('loading', 'lazy'); // Add lazy loading
                 img.onerror = () => {
-                    img.style.display = 'none'; // Hide missing images
+                    img.style.display = 'none';
                 };
                 imageContainer.appendChild(img);
             }
 
-            // Update button states
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = endIndex >= totalImages;
         }
@@ -67,7 +66,6 @@
             }
         });
 
-        // Initialize with the first set of images
         updateImages();
     </script>
 </body>
