@@ -3,7 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
 }
@@ -17,14 +17,16 @@ h1 {
 }
 
 #gallery-image {
-    max-width: 100%;
-    max-height: 100%;
+    width: 90vw; /* Use 90% of viewport width */
+    max-width: 1200px; /* Cap at 1200px to avoid overly large images on big screens */
+    max-height: 80vh; /* Allow taller images, but cap at 80% of viewport height */
     border: 2px solid #333;
     border-radius: 8px;
+    object-fit: contain; /* Ensure images scale properly without distortion */
 }
 
 .navigation {
-    margin-top: 20px;
+    margin-top: 30px; /* Increased margin to avoid overlap with larger images */
 }
 
 button {
@@ -45,4 +47,22 @@ button:hover {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    #gallery-image {
+        width: 95vw; /* Use more width on smaller screens */
+        max-width: 100%; /* Remove max-width cap for mobile */
+        max-height: 70vh; /* Slightly smaller height for mobile */
+    }
+
+    .navigation {
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }
