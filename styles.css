@@ -17,8 +17,8 @@ h1 {
 }
 
 #gallery-image {
-    max-width: 80%;
-    max-height: 60vh;
+    max-width: 100%;
+    max-height: 100%;
     border: 2px solid #333;
     border-radius: 8px;
 }
